@@ -2,7 +2,7 @@
   <PropertyGroup>
 
     <SemVer Condition="'$(SemVer)'==''">1.0.0-dev</SemVer>
-    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)'==''">win10-x64</RuntimeIdentifier>
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)'==''">any</RuntimeIdentifier>
 
     <!-- dependencies: library versions -->
     <AppMetricsVersion>[3.0.0,4)</AppMetricsVersion>

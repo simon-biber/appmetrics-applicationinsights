@@ -26,14 +26,14 @@ Get-ChildItem ./ -Include bin,obj,publish,packages -Recurse | ForEach-Object ($_
 # pack App.Metrics.Reporting.ApplicationInsights
 Write-Host '>>> Packaging App.Metrics.Reporting.ApplicationInsights >>>' -ForegroundColor Yellow
 $csproj = Resolve-Path './src\App.Metrics.Reporting.ApplicationInsights/App.Metrics.Reporting.ApplicationInsights.csproj'
-& dotnet pack $csproj -c $Configuration -o $publishDir /p:SemVer=$SemVer /p:Platform=x64 /nologo
+& dotnet pack $csproj -c $Configuration -o $publishDir /p:SemVer=$SemVer /p:Platform=any /nologo
 
 # publish SandboxConsoleApp
 if ($Sandbox -eq $true) {
     Write-Host '>>> Publishing SandboxConsoleApp >>>' -ForegroundColor Yellow
     $csproj = Resolve-Path './sample/SandboxConsoleApp/SandboxConsoleApp.csproj'
     $output = Join-Path $publishDir 'sandbox'
-    & dotnet publish $csproj -r $RID -c $Configuration -o $output /p:SemVer=$SemVer /p:RuntimeIdentifier=$RID /p:Platform=x64 /nologo
+    & dotnet publish $csproj -r $RID -c $Configuration -o $output /p:SemVer=$SemVer /p:RuntimeIdentifier=$RID /p:Platform=any /nologo
 }
 
 Pop-Location
